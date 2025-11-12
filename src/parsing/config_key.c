@@ -6,17 +6,15 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:38:05 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/03 12:02:32 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:41:15 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 /*
-
-printf("line : %s | Line len :  %zu |  matcher : %s  |  
-matcher pattern_len : %d\n\n" , line, ft_strlen(line) , 
-matcher->pattern, matcher->pattern_len);
+	printf("line : %s | Line len :  %zu |  matcher : %s  |  
+	matcher pattern_len : %d\n\n", line, ft_strlen(line),
+	matcher->pattern, matcher->pattern_len);
 */
 
 static int	check_pattern_match(char *line, t_key_matcher *matcher)
@@ -54,17 +52,16 @@ static bool	is_texture_or_color_key(char *str)
 
 /*
 	CASE 1: ila kan file.cub kaybda b empty lines
-	CASE 2 : line fih only spaces 
+	CASE 2 : line fih only spaces
 	CASE 3 : must be color or texture NO .. or F C
-	CASE 4 : Invalid key not texture and no color  ZO  TO ..
-	
+	CASE 4 : Invalid key not texture and no color ZO TO ..
 */
 
 int	configuration_key(t_cub *cub, char *line, int i, int *success)
 {
 	if (line[0] == 0 || line[0] == '\n')
 		return (true);
-	if (line[i]  == 0)
+	if (line[i] == 0)
 		return (true);
 	if (is_texture_or_color_key(line + i))
 	{

@@ -1,5 +1,16 @@
-#include "../../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_valid_map_tile_enclosed.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/12 13:47:54 by ajelloul          #+#    #+#             */
+/*   Updated: 2025/11/12 13:47:58 by ajelloul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../../includes/cub3d.h"
 
 /*It checks: “Is this tile a place the player can walk or stand on?”*/
 static int	is_playable_tile(char c)

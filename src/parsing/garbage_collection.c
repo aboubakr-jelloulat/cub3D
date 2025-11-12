@@ -6,13 +6,26 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:49:02 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/05 15:48:11 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:46:02 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+char	*skip_empty_lines(int fd)
+{
+	char	*line;
 
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (!is_line_empty(line))
+			break ;
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (line);
+}
 
 void	delete_duplicate_list(t_duplicat_list *list)
 {

@@ -6,12 +6,11 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:59:02 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/04 08:15:02 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:52:21 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 
 void	append_row_to_map(t_map_row **map_row, char *line)
 {
@@ -75,4 +74,3 @@ int	parse_map(t_cub *cub, int fd)
 	delete_map_rows(map_rows);
 	return (0);
 }
-

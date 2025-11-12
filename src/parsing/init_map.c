@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:56:13 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/04 13:19:00 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:47:35 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ static int	fill_map_array(t_cub *cub, t_map_row *rows, int width)
 		cub->map.map[i] = malloc(sizeof(char) * (width + 1));
 		if (!cub->map.map[i])
 			return (1);
-		
 		ft_memset(cub->map.map[i], ' ', width);
 		cub->map.map[i][width] = '\0';
-	
 		ft_memcpy(cub->map.map[i], current->row, current->size);
 		current = current->down_row;
 		i++;
@@ -67,10 +65,8 @@ int	init_map_from_rows(t_cub *cub, t_map_row *rows)
 	calculate_dimensions(rows, &width, &height);
 	cub->map.width = width;
 	cub->map.height = height;
-	
 	cub->map.map = malloc(sizeof(char *) * height);
 	if (!cub->map.map)
 		return (1);
 	return (fill_map_array(cub, rows, width));
 }
-

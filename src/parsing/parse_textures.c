@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:45:17 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/03 09:27:13 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:53:00 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	parse_south_texture(t_cub *cub, char *line, int *count)
 static void	parse_west_texture(t_cub *cub, char *line, int *count)
 {
 	char	*path;
-	int 	len;
+	int		len;
 
 	if (is_duplicate(&cub->duplicate_list, "WE"))
 	{
@@ -98,7 +98,7 @@ static void	parse_west_texture(t_cub *cub, char *line, int *count)
 static void	parse_east_texture(t_cub *cub, char *line, int *count)
 {
 	char	*path;
-	int 	len;
+	int		len;
 
 	if (is_duplicate(&cub->duplicate_list, "EA"))
 	{

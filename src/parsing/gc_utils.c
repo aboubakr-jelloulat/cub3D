@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 12:17:31 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/05 15:48:36 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:46:26 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ static void	free_single_path(char **path)
 	}
 }
 
-
-
 void	delete_textures_paths(t_cub *cub)
 {
 	free_single_path(&cub->no_texture_path);
@@ -66,4 +64,3 @@ void	delete_mlx_images(t_cub *cub)
 	destroy_one_textr(&cub->textures.mlx_south);
 	destroy_one_textr(&cub->textures.mlx_west);
 }
-

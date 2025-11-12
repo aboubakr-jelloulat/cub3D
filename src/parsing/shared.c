@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 12:22:09 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/03 12:11:53 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:45:24 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ void	display_errors(const char *error_msg)
 	printf(RED "\nError\n \t=> %s \033[0m\n", error_msg);
 }
 
-
 /*
 	1 - Extra spaces between key and path
-
 	2 - If the line ends with spaces, remove them
 */
 char	*extract_texture_path(char *line, int offset)
@@ -64,7 +62,7 @@ int	is_wall_or_space(char c)
 	return (c == '1' || is_whitespace(c));
 }
 
-static int	is_line_empty(char *line)
+int	is_line_empty(char *line)
 {
 	int	i;
 
@@ -74,19 +72,4 @@ static int	is_line_empty(char *line)
 	if (line[i] == '\n' || line[i] == 0)
 		return (1);
 	return (0);
-}
-
-char	*skip_empty_lines(int fd)
-{
-	char	*line;
-
-	line = get_next_line(fd);
-	while (line)
-	{
-		if (!is_line_empty(line))
-			break ;
-		free(line);
-		line = get_next_line(fd);
-	}
-	return (line);
 }

@@ -6,13 +6,16 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:34:44 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/01 11:17:20 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:56:40 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-
+int	is_player_symbol(char c)
+{
+	return (c == 'N' || c == 'E' || c == 'S' || c == 'W');
+}
 
 int	is_whitespace(char c)
 {

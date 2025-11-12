@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:51:40 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/05 15:55:47 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:31:13 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	debug(t_cub *cub)
 		(cub->list_status.ceiling_color >> 16) & 0xFF,
 		(cub->list_status.ceiling_color >> 8) & 0xFF,
 		cub->list_status.ceiling_color & 0xFF);
-	printf("Player position: x=%d, y=%d, angle=%.2f\n", 
+	printf("Player position: x=%d, y=%d, angle=%.2f\n",
 		cub->player.x, cub->player.y, cub->player.radius);
 }
 
@@ -92,12 +92,9 @@ int	load_map_data(t_cub *cub, int ac, char **av)
 	return (0);
 }
 
-
 int	main(int ac, char **av)
 {
 	t_cub	cub;
-
-
 
 	ft_bzero(&cub, sizeof(t_cub));
 	if (load_map_data(&cub, ac, av) == 1)
@@ -109,10 +106,5 @@ int	main(int ac, char **av)
 	mlx_loop_hook(cub.mlx, draw_loop, &cub);
 	mlx_loop(cub.mlx);
 	shutdown_cub(&cub);
-	
-	
-	
 	return (0);
 }
-
-//brew install glfw

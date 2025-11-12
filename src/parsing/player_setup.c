@@ -6,71 +6,13 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 12:08:25 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/05 15:43:32 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:57:11 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-
-// static int	convert_direction(char c)
-// {
-// 	if (c == 'N')
-// 		return (270);
-// 	if (c == 'S')
-// 		return (90);
-// 	if (c == 'E')
-// 		return (0);
-// 	if (c == 'W')
-// 		return (180);
-// 	return (-1);
-// }
-
-// static int	process_player_position(t_cub *cub, int x, int y)
-// {
-// 	char	tile;
-// 	int		direction;
-
-// 	tile = cub->map.map[y][x];
-// 	if (is_player_symbol(tile))
-// 	{
-// 		direction = convert_direction(tile);
-// 		set_player(cub, x, y, direction);
-// 		return (1);
-// 	}
-// 	return (0);
-// }
-
-// static int	scan_map_for_player(t_cub *cub)
-// {
-// 	int	x;
-// 	int	y;
-
-// 	y = 0;
-// 	while (y < cub->map.height)
-// 	{
-// 		x = 0;
-// 		while (x < cub->map.width)
-// 		{
-// 			if (process_player_position(cub, x, y))
-// 				return (EXIT_SUCCESS);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	return (EXIT_FAILURE);
-// }
-
-// int	find_player_start(t_cub *cub)
-// {
-// 	if (!cub || !cub->map.map)
-// 		return (EXIT_FAILURE);
-// 	return (scan_map_for_player(cub));
-// }
-
-
 // Convert player direction character to angle in degrees
-
 double	deg_to_rad(double degrees)
 {
 	return (degrees * (M_PI / 180.0));
@@ -96,8 +38,6 @@ static int	get_player_angle(char direction)
 	return (-1);
 }
 
-// player  ***** 
-// Find and set player start position and direction
 int	validate_and_set_player(t_cub *cub)
 {
 	int		x;
@@ -123,4 +63,33 @@ int	validate_and_set_player(t_cub *cub)
 		y++;
 	}
 	return (1);
+}
+
+int	player_validator(t_map_row *map_row)
+{
+	t_map_row	*current;
+	int			player_count;
+	int			pos;
+
+	player_count = 0;
+	current = map_row;
+	while (current)
+	{
+		pos = 0;
+		while (current->row[pos])
+		{
+			if (is_player_symbol(current->row[pos]))
+			{
+				player_count++;
+				if (player_count > 1)
+					return (display_errors
+						("Multiple player spawn points found"), 1);
+			}
+			pos++;
+		}
+		current = current->down_row;
+	}
+	if (player_count == 0)
+		return (display_errors("No player spawn point found"), 1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:49:38 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/03 10:43:36 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:50:41 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,7 @@
 #include "../../includes/cub3d.h"
 
 
-void	add_key_to_duplicate_list(t_duplicat_list **list, char *key)
-{
-	t_duplicat_list	*new_node;
-	t_duplicat_list	*tail;
 
-	new_node = malloc(sizeof(t_duplicat_list));
-	if (!new_node)
-		return ;
-	new_node->key = key;
-	new_node->next = NULL;
-	if (!*list)
-	{
-		*list = new_node;
-		return ;
-	}
-	tail = *list;
-	while (tail->next)
-		tail = tail->next;
-	tail->next = new_node;
-}
-
-int	is_duplicate(t_duplicat_list **list, char *key)
-{
-	t_duplicat_list	*current;
-	int				key_length;
-
-	key_length = ft_strlen(key);
-	current = *list;
-	while (current)
-	{
-		if (ft_strncmp(current->key, key, key_length + 1) == 0)
-			return (1);
-		current = current->next;
-	}
-	add_key_to_duplicate_list(list, key);
-	return (0);
-}
 
 void	free_rbg_values(char **value)
 {

@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:40:05 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/06 10:22:01 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:16:40 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,12 @@ typedef struct s_key_matcher
 	int		pattern_len;
 }	t_key_matcher;
 
-
-// render 
-
 typedef struct s_wall_hit
 {
-	int		side;       // 0 = vertical (NS), 1 = horizontal (EW)
-	float	hit_x;      // exact hit point x
-	float	hit_y;      // exact hit point y
-	float	perp_dist;  // perpendicular distance
+	int		side;
+	float	hit_x;
+	float	hit_y;
+	float	perp_dist;
 }	t_wall_hit;
 
 typedef struct s_cub
