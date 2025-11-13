@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:40:05 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:16:40 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/13 09:58:21 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,6 @@ typedef struct s_key_matcher
 	int		pattern_len;
 }	t_key_matcher;
 
-typedef struct s_wall_hit
-{
-	int		side;
-	float	hit_x;
-	float	hit_y;
-	float	perp_dist;
-}	t_wall_hit;
-
 typedef struct s_cub
 {
 	char			*no_texture_path;
@@ -116,5 +108,24 @@ typedef struct s_cub
 	bool			floor_color_set;
 	bool			ceiling_color_set;
 }	t_cub;
+
+typedef struct s_wall_hit
+{
+	int		side;
+	float	hit_x;
+	float	hit_y;
+	float	perp_dist;
+	t_cub	*cub;
+}	t_wall_hit;
+
+typedef struct s_draw_params
+{
+	int				draw_start;
+	int				draw_end;
+	double			step;
+	double			tex_y;
+	float			tex_x;
+	mlx_texture_t	*texture;
+}	t_draw_params;
 
 #endif

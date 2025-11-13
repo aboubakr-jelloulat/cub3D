@@ -6,50 +6,15 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:49:38 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:50:41 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/13 09:20:03 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/cub3d.h"
 
-
-
-
-void	free_rbg_values(char **value)
-{
-	int	idx;
-
-	idx = 0;
-	while (value[idx])
-	{
-		free(value[idx]);
-		value[idx] = NULL;
-		idx++;
-	}
-	free(value);
-	value = NULL;
-}
-static bool	is_valid_format(char *str)
-{
-	int	commas;
-	int	i;
-
-	commas = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ',')
-			commas++;
-		i++;
-	}
-	return (commas == 2);
-}
-
-
 /*
-
-	It builds one single integer that represents a color  with red, green, blue (transparency) combined together
+	It builds one single integer that represents a color  with 
+		red, green, blue (transparency) combined together
 	he vertical bar | is bitwise OR  it combines all bits together
 */
 static int	build_color(int r, int g, int b)
@@ -81,6 +46,7 @@ int	parse_color_value(char *line, int *out_color)
 	*out_color = build_color(r, g, b);
 	return (1);
 }
+
 static void	handle_floor_color(t_cub *cub, char *line, int *count)
 {
 	if (is_duplicate(&cub->duplicate_list, "F"))

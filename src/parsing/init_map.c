@@ -6,11 +6,44 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:56:13 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:47:35 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/13 09:19:15 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+/*Hado zyden mn file dyal colors */
+
+void	free_rbg_values(char **value)
+{
+	int	idx;
+
+	idx = 0;
+	while (value[idx])
+	{
+		free(value[idx]);
+		value[idx] = NULL;
+		idx++;
+	}
+	free(value);
+	value = NULL;
+}
+
+bool	is_valid_format(char *str)
+{
+	int	commas;
+	int	i;
+
+	commas = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			commas++;
+		i++;
+	}
+	return (commas == 2);
+}
 
 /*
 	width → the longest row length (number of columns)

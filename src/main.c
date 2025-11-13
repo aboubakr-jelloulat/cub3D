@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:51:40 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:31:13 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:59:50 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	init_textures(t_cub *cub)
 void	debug(t_cub *cub)
 {
 	int	i;
-
+	// Debug 
 	printf("Map height: %d\n", cub->map.height);
 	printf("Map width: %d\n", cub->map.width);
 	i = -1;
