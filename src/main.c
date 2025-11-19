@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:51:40 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:59:50 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/19 11:33:05 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	init_textures(t_cub *cub)
 	}
 	return (0);
 }
+
+
 
 void	debug(t_cub *cub)
 {
@@ -85,7 +87,7 @@ int	load_map_data(t_cub *cub, int ac, char **av)
 		return (1);
 	if (parse_map(cub, fd))
 		return (1);
-	debug(cub);
+	// debug(cub);
 	close(fd);
 	if (validate_and_set_player(cub))
 		return (1);

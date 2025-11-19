@@ -6,22 +6,25 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:38:05 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:41:15 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/19 09:56:38 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-/*
-	printf("line : %s | Line len :  %zu |  matcher : %s  |  
-	matcher pattern_len : %d\n\n", line, ft_strlen(line),
-	matcher->pattern, matcher->pattern_len);
-*/
 
 static int	check_pattern_match(char *line, t_key_matcher *matcher)
 {
 	return (ft_strncmp(line, matcher->pattern, matcher->pattern_len) == 0);
 }
 
+/*
+	compound literal in C
+		Create a temporary t_key_matcher struct with these values
+	similar:
+		t_key_matcher tmp = { "NO ", 3 };
+		matchers[0] = tmp;
+
+*/
 static int	init_matchers(t_key_matcher *matchers)
 {
 	matchers[0] = (t_key_matcher){"NO ", 3};
@@ -59,10 +62,10 @@ static bool	is_texture_or_color_key(char *str)
 
 int	configuration_key(t_cub *cub, char *line, int i, int *success)
 {
-	if (line[0] == 0 || line[0] == '\n')
+	if (line[0] == 0)
+	{
 		return (true);
-	if (line[i] == 0)
-		return (true);
+	}
 	if (is_texture_or_color_key(line + i))
 	{
 		parse_all_wall_textures(cub, line, i, success);

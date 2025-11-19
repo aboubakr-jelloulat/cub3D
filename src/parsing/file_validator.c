@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:58:07 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:37:09 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/19 09:37:50 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ static int	check_extension_format(char *filename, int len)
 }
 
 /*
-	CASE 1 : hej.cub
-	CASE 2 : ./cub3D maps/.cub
+	./cub3D maps/.cub
 */
 int	valid_file_extension(char *filename)
 {

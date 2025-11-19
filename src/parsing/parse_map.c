@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:59:02 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:52:21 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/19 10:51:41 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ static int	process_map_lines(int fd, t_map_row **rows)
 	return (0);
 }
 
+/*
+	off_t offset_pos = lseek(fd, 0, SEEK_CUR);
+	printf("File offset: %lld\n", offset_pos);
+	exit(0);
+*/
 int	parse_map(t_cub *cub, int fd)
 {
 	t_map_row	*map_rows;

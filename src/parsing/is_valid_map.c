@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:22:47 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:51:15 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/19 11:10:33 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,10 @@ int	is_valid_map_char(char c)
 }
 
 /*
-	if (row->row[pos] == '1') ????  If the tile is a wall,
-		there’s nothing wrong bla matchiki 
+	if (row->row[pos] == '1') ????  If the tile is a wall
+		there nothing wrong bla matchiki 
 */
 
-/*
-	printf("row : %c\n", row->row[pos]);
-	if (pos == 0)
-		exit(0);
-*/
-
-/*
-	1 one by one for every loop
-	If it's a wall, continue to next character
-*/
 int	scan_row_positions(t_map_row *row)
 {
 	int		pos;
@@ -78,9 +68,6 @@ static int	validate_row_start(t_map_row *row)
 	return (0);
 }
 
-/*
-	111111111111111111
-*/
 int	is_valid_map(t_map_row *map_row)
 {
 	t_map_row	*current;

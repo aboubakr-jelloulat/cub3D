@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 11:56:13 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/13 09:19:15 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/19 11:31:39 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int	fill_map_array(t_cub *cub, t_map_row *rows, int width)
 	return (EXIT_SUCCESS);
 }
 
-// Main function: convert linked list of rows to 2D array
+/* convert linked list of rows to 2D array*/
 int	init_map_from_rows(t_cub *cub, t_map_row *rows)
 {
 	int	width;

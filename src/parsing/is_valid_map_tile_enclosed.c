@@ -6,13 +6,12 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 13:47:54 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:47:58 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/19 11:12:51 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-/*It checks: “Is this tile a place the player can walk or stand on?”*/
 static int	is_playable_tile(char c)
 {
 	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W');
@@ -54,8 +53,6 @@ int	down_valid(t_map_row *down, int pos)
 {
 	return (is_neighbor_safe(down, pos));
 }
-
-// Main function: There is no hole in the walls  the map is completely closed
 
 /*
 	Fokax katkoun machi safe :

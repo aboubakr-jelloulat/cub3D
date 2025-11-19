@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 13:39:51 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/12 13:51:40 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/19 09:40:16 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ static int	validate_textures_and_colors(t_cub *cub)
 }
 
 /*
-	read until map = read textures path and colors only until succes = 6
-
-	printf("%s", line);
-	printf("%d", offset);
+ read textures path + colors only until succes = 6
 */
 
 /*

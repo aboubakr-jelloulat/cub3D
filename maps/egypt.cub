@@ -1,13 +1,13 @@
-
-NO   textures/egypt_no.png
-SO   textures/egypt_so.png
-EA   textures/egypt_ea.png
+       
+NO   textures/egypt_no.png  
+SO   textures/egypt_so.png 	
+EA   textures/egypt_ea.png		 	
 WE   textures/egypt_we.png
 
 F 20,20,20
 C 20,20,20
+    
 
-                    
 11111111111111111111111111111111111111111111
 111111111111E0000000000000000000111111111111
 11111111111100000000111000000000111111111111
