@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 09:59:40 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/13 10:02:35 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/20 10:55:39 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ float	calc_tex_x(int side, float hit_x, float hit_y)
 		wall_coord = hit_y - (int)hit_y;
 	else
 		wall_coord = hit_x - (int)hit_x;
-	if (wall_coord < 0.0f)
-		wall_coord += 1.0f;
 	return (wall_coord);
 }
 
