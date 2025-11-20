@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 19:05:52 by ael-krai          #+#    #+#             */
-/*   Updated: 2025/10/31 08:23:27 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/20 10:51:18 by ael-krai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void    key_press(t_cub *cub, int key)
     else if (key == MLX_KEY_ESCAPE)
     {
         shutdown_cub(cub);
-		// halt_and_shutdown(cub);
         exit(0);
     }
 }

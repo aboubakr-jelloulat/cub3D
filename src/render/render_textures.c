@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 09:56:11 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/13 10:02:06 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/20 12:49:11 by ael-krai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,18 @@ static uint32_t	sample_texture(mlx_texture_t *tex, float tex_x, float tex_y)
 static void	init_draw_params(t_wall_hit *hit, int line_height,
 	t_draw_params *params)
 {
+	params->texture = get_wall_texture(hit->cub, hit->side,
+			hit->hit_x, hit->hit_y);
+	
 	params->draw_start = (HEIGHT - line_height) / 2;
 	params->draw_end = params->draw_start + line_height;
 	if (params->draw_start < 0)
 		params->draw_start = 0;
 	if (params->draw_end >= HEIGHT)
 		params->draw_end = HEIGHT - 1;
-	params->step = 1.0 / line_height;
-	params->tex_y = (float)(params->draw_start
-			- (HEIGHT - line_height) / 2) * params->step;
-	params->texture = get_wall_texture(hit->cub, hit->side,
-			hit->hit_x, hit->hit_y);
+	params->step = (double)(1.0 / line_height);
+	params->tex_y = (double)(params->draw_start - (HEIGHT - line_height) / 2) * params->step;
+
 	params->tex_x = calc_tex_x(hit->side, hit->hit_x, hit->hit_y);
 }
 
@@ -81,8 +82,12 @@ void	draw_textured_slice(t_cub *cub, int screen_x,
 	y = params.draw_start;
 	while (y < params.draw_end)
 	{
+		if (params.tex_y < 0)
+			params.tex_y = 0;
+		if (params.tex_y >= (double)params.texture->height)
+			params.tex_y = params.texture->height - 1;
 		color = sample_texture(params.texture, params.tex_x, params.tex_y);
-		mlx_put_pixel(cub->image, screen_x, y, color);
+		mlx_put_pixel(cub->image, screen_x, y, 0x0FAE1);
 		y++;
 		params.tex_y += params.step;
 	}

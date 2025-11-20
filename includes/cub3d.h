@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:43:54 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/07 10:33:37 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/20 10:38:50 by ael-krai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "/Users/ajelloul/MLX42/include/MLX42/MLX42.h"
+# include "/Users/ael-krai/MLX42/include/MLX42/MLX42.h"
 
 # include <stdio.h>
 # include <stdlib.h>

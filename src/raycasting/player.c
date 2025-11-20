@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 12:20:30 by ael-krai          #+#    #+#             */
-/*   Updated: 2025/11/06 10:46:51 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/20 12:46:13 by ael-krai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+bool touch(t_cub *cub, float px, float py)
+{
+    int x;
+    int y;
+
+    x = px / BLOCK;
+    y = py / BLOCK;
+    if (y < 1 || y >= cub->map.height || x < 1 || x >= cub->map.width)
+        return (true);
+    if (cub->map.map[y][x] == '1')
+        return (true);
+    return (false);
+}
 
 void	update_direction(t_cub *cub, t_player *player, float dx, float dy)
 {
