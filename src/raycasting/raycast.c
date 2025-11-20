@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 16:19:24 by ael-krai          #+#    #+#             */
-/*   Updated: 2025/11/06 12:53:28 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/20 11:41:20 by ael-krai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,6 @@ int dda_loop(t_cub *cub, t_dda *dda, int step, int max_steps)
     return (0);
 }
 
-// Old one Amin
-
-
-// void cast_ray(t_cub *cub, float angle, float *hit_x, float *hit_y, float *perp_dist)
-// {
-//     t_dda dda;
-
-//     ray_direction(cub, angle, &dda);
-//     step_and_side_dist(&dda);
-//     dda_loop(cub, &dda, 0, 0);
-//     if (dda.side == 0)
-//         *perp_dist = (dda.side_dist_x - dda.delta_dist_x) * BLOCK;
-//     else
-//         *perp_dist = (dda.side_dist_y - dda.delta_dist_y) * BLOCK;
-//     if (*perp_dist < 0.1f)
-//         *perp_dist = 0.1f;
-//     *hit_x = cub->player.x + dda.ray_dir_x * (*perp_dist);
-//     *hit_y = cub->player.y + dda.ray_dir_y * (*perp_dist);
-// }
-
-
-// new
-
-
 void cast_ray(t_cub *cub, float angle, float *hit_x, float *hit_y, float *perp_dist)
 {
 	t_dda dda;
@@ -107,20 +83,15 @@ void cast_ray(t_cub *cub, float angle, float *hit_x, float *hit_y, float *perp_d
 	ray_direction(cub, angle, &dda);
 	step_and_side_dist(&dda);
 	dda_loop(cub, &dda, 0, 0);
-	
-	// Save side for texture selection
 	if (!cub->dda)
 		cub->dda = malloc(sizeof(t_dda));
 	cub->dda->side = dda.side;  // ← IMPORTANT: save this
-	
 	if (dda.side == 0)
 		*perp_dist = (dda.side_dist_x - dda.delta_dist_x) * BLOCK;
 	else
 		*perp_dist = (dda.side_dist_y - dda.delta_dist_y) * BLOCK;
-	
 	if (*perp_dist < 0.1f)
 		*perp_dist = 0.1f;
-	
 	*hit_x = cub->player.x + dda.ray_dir_x * (*perp_dist);
 	*hit_y = cub->player.y + dda.ray_dir_y * (*perp_dist);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:51:40 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/19 11:33:05 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/20 12:32:40 by ael-krai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_game(t_cub *cub)
 	cub->player.key_left = false;
 	cub->player.left_rotate = false;
 	cub->player.right_rotate = false;
-	cub->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
+	cub->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	cub->image = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(cub->mlx, cub->image, 0, 0);
 }
@@ -94,6 +94,7 @@ int	load_map_data(t_cub *cub, int ac, char **av)
 	return (0);
 }
 
+// 1 leak !
 int	main(int ac, char **av)
 {
 	t_cub	cub;
