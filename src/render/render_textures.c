@@ -6,7 +6,7 @@
 /*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 09:56:11 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/20 12:49:11 by ael-krai         ###   ########.fr       */
+/*   Updated: 2025/11/20 13:08:37 by ael-krai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	draw_textured_slice(t_cub *cub, int screen_x,
 		if (params.tex_y >= (double)params.texture->height)
 			params.tex_y = params.texture->height - 1;
 		color = sample_texture(params.texture, params.tex_x, params.tex_y);
-		mlx_put_pixel(cub->image, screen_x, y, 0x0FAE1);
+		mlx_put_pixel(cub->image, screen_x, y, color);
 		y++;
 		params.tex_y += params.step;
 	}
