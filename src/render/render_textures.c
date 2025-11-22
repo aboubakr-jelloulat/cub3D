@@ -62,10 +62,10 @@ static void	init_draw_params(t_wall_hit *hit, int line_height,
 		params->draw_start = 0;
 	if (params->draw_end >= HEIGHT)
 		params->draw_end = HEIGHT - 1;
+	params->tex_x = calc_tex_x(hit->side, hit->hit_x, hit->hit_y);
 	params->step = (double)(1.0 / line_height);
 	params->tex_y = (double)(params->draw_start - (HEIGHT - line_height) / 2)
 		* params->step;
-	params->tex_x = calc_tex_x(hit->side, hit->hit_x, hit->hit_y);
 }
 
 void	draw_textured_slice(t_cub *cub, int screen_x,

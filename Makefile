@@ -29,7 +29,7 @@ GLFW_PREFIX = $(shell brew --prefix glfw)
 LIBS = -L $(LIBFT_DIR) -lft \
        $(MLX42_DIR)/build/libmlx42.a \
        -L $(GLFW_PREFIX)/lib -lglfw -lm \
-       -framework OpenGL -framework Cocoa -framework IOKit -framework CoreFoundation
+       -framework OpenGL -framework Cocoa -framework IOKit
 
 all: $(NAME)
 
