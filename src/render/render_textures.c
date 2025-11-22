@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 09:56:11 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/20 13:11:05 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/22 11:09:03 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,6 @@ void	draw_textured_slice(t_cub *cub, int screen_x,
 	y = params.draw_start;
 	while (y < params.draw_end)
 	{
-		if (params.tex_y < 0)
-			params.tex_y = 0;
-		if (params.tex_y >= (double)params.texture->height)
-			params.tex_y = params.texture->height - 1;
 		color = sample_texture(params.texture, params.tex_x, params.tex_y);
 		mlx_put_pixel(cub->image, screen_x, y, color);
 		y++;

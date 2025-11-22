@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:51:40 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/20 12:32:40 by ael-krai         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:14:32 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_game(t_cub *cub)
 	cub->player.key_left = false;
 	cub->player.left_rotate = false;
 	cub->player.right_rotate = false;
-	cub->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
+	cub->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	cub->image = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(cub->mlx, cub->image, 0, 0);
 }
@@ -45,33 +45,6 @@ int	init_textures(t_cub *cub)
 	return (0);
 }
 
-
-
-void	debug(t_cub *cub)
-{
-	int	i;
-	// Debug 
-	printf("Map height: %d\n", cub->map.height);
-	printf("Map width: %d\n", cub->map.width);
-	i = -1;
-	while (++i < cub->map.height)
-		printf("[%s]\n", cub->map.map[i]);
-	printf("NO: %s\n", cub->no_texture_path);
-	printf("SO: %s\n", cub->so_texture_path);
-	printf("WE: %s\n", cub->we_texture_path);
-	printf("EA: %s\n", cub->ea_texture_path);
-	printf("F: %d, in rgb r: %d, g: %d, b: %d\n", cub->list_status.floor_color,
-		(cub->list_status.floor_color >> 16) & 0xFF,
-		(cub->list_status.floor_color >> 8) & 0xFF,
-		cub->list_status.floor_color & 0xFF);
-	printf("C: %d, in rgb r: %d, g: %d, b: %d\n", cub->list_status.ceiling_color,
-		(cub->list_status.ceiling_color >> 16) & 0xFF,
-		(cub->list_status.ceiling_color >> 8) & 0xFF,
-		cub->list_status.ceiling_color & 0xFF);
-	printf("Player position: x=%d, y=%d, angle=%.2f\n",
-		cub->player.x, cub->player.y, cub->player.radius);
-}
-
 int	load_map_data(t_cub *cub, int ac, char **av)
 {
 	int	fd;
@@ -87,14 +60,12 @@ int	load_map_data(t_cub *cub, int ac, char **av)
 		return (1);
 	if (parse_map(cub, fd))
 		return (1);
-	// debug(cub);
 	close(fd);
 	if (validate_and_set_player(cub))
 		return (1);
 	return (0);
 }
 
-// 1 leak !
 int	main(int ac, char **av)
 {
 	t_cub	cub;

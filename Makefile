@@ -1,96 +1,60 @@
-NAME		= cub3D
+NAME = cub3D
 
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-# Directories
-SRC_DIR		= src
-INCLUDE_DIR	= includes
-SHARED_DIR	= shared
+SRC_DIR = src
+PARSING_DIR = $(SRC_DIR)/parsing
+RAYCASTING_DIR = $(SRC_DIR)/raycasting
+RENDER_DIR = $(SRC_DIR)/render
+GNL_DIR = shared/gnl
+LIBFT_DIR = shared/libft
+MLX42_DIR = /Users/$(USER)/MLX42
 
-# Sub-directories
-PARSING_DIR		= $(SRC_DIR)/parsing
-RAYCASTING_DIR	= $(SRC_DIR)/raycasting
-RENDER_DIR		= $(SRC_DIR)/render
-GNL_DIR			= $(SHARED_DIR)/gnl
-LIBFT_DIR		= $(SHARED_DIR)/libft
+SRCS = $(SRC_DIR)/main.c  $(PARSING_DIR)/config_key.c $(PARSING_DIR)/file_validator.c $(PARSING_DIR)/garbage_collection.c \
+       $(PARSING_DIR)/gc_utils.c $(PARSING_DIR)/init_map.c $(PARSING_DIR)/is_valid_map.c $(PARSING_DIR)/is_valid_map_tile_enclosed.c \
+       $(PARSING_DIR)/parse_colors.c $(PARSING_DIR)/parse_game_settings.c $(PARSING_DIR)/parse_map.c $(PARSING_DIR)/parse_textures.c \
+       $(PARSING_DIR)/player_setup.c $(PARSING_DIR)/shared.c \
+       $(PARSING_DIR)/utils.c $(RAYCASTING_DIR)/draw.c $(RAYCASTING_DIR)/hooks.c $(RAYCASTING_DIR)/player.c $(RAYCASTING_DIR)/raycast.c \
+       $(RENDER_DIR)/render_textures.c $(RENDER_DIR)/render_utils.c $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
 
-# Source files
-MAIN_SRC		= $(SRC_DIR)/main.c
-PARSING_SRCS	= $(wildcard $(PARSING_DIR)/*.c)
-RAYCASTING_SRCS	= $(wildcard $(RAYCASTING_DIR)/*.c)
-RENDER_SRCS		= $(wildcard $(RENDER_DIR)/*.c)
-GNL_SRCS		= $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
+OBJS = $(SRCS:.c=.o)
 
-# All source files
-SRCS		= $(MAIN_SRC) $(PARSING_SRCS) $(RAYCASTING_SRCS) $(RENDER_SRCS) $(GNL_SRCS)
+LIBFT = $(LIBFT_DIR)/libft.a
 
-# Object files
-OBJS		= $(SRCS:.c=.o)
+INCLUDES = -I includes -I $(LIBFT_DIR) -I $(GNL_DIR) -I $(MLX42_DIR)/include
 
-# Headers
-HEADERS		= $(wildcard $(INCLUDE_DIR)/*.h)
+GLFW_PREFIX = $(shell brew --prefix glfw)
 
-# Libraries
-LIBFT		= $(LIBFT_DIR)/libft.a
-
-
-# Compiler and flags 
-CC      = cc
-CFLAGS  = -Wall -Wextra -Werror -ffast-math -O3 
-INCLUDES = -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(MLX)
-
-#mlx
-MLX = ~Desktop/MLX42
-
-MLX42_DIR = /Users/${USER}/MLX42
-
-INCLUDES = -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(MLX42_DIR)/include
-
-
-# LIBS = -L$(LIBFT_DIR) -lft $(MLX42_DIR)/build/libmlx42.a \
-#        -framework OpenGL -framework Cocoa -framework IOKit -framework CoreFoundation \
-#        -L"/Users/${USER}/goinfre/homebrew/Cellar/glfw/3.4/lib" -lglfw -lm
-
-GLFW_PREFIX  := $(shell brew --prefix glfw)
-GLFW_LIB_DIR := $(GLFW_PREFIX)/lib
-GLFW_INC_DIR := $(GLFW_PREFIX)/include
-
-LIBS = -L$(LIBFT_DIR) -lft \
+LIBS = -L $(LIBFT_DIR) -lft \
        $(MLX42_DIR)/build/libmlx42.a \
-       -L$(GLFW_LIB_DIR) -lglfw3 -lm \
+       -L $(GLFW_PREFIX)/lib -lglfw -lm \
        -framework OpenGL -framework Cocoa -framework IOKit -framework CoreFoundation
-
-
 
 all: $(NAME)
 
 $(LIBFT):
-	@make -C ./shared/libft
+	@make -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
-	@printf "$(CYAN)\n$(NAME) compiled successfully! ✅$(RESET)\n"
+	@printf "\n$(NAME) compiled successfully! \n"
 
-%.o: %.c $(HEADERS)
-	@printf "$(CYAN)Compiling $<$(RESET)\n"
+
+%.o: %.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@printf "$(RED)Removing object files$(RESET)\n"
 	@rm -f $(OBJS)
-	@make -C ./shared/libft clean
+	@make -C $(LIBFT_DIR) clean
+	@printf "$(RED)Removing object files$(RESET)\n"
 
 fclean: clean
-	@printf "$(RED)Removing $(NAME)$(RESET)\n"
 	@rm -f $(NAME)
-	@make -C ./shared/libft fclean
+	@make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
 cub : all clean
 
 .PHONY: all clean fclean re
-
-
-RESET		= \033[0m
-RED			= \033[31m
-CYAN		= \033[36m

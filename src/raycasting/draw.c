@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-krai <ael-krai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 19:02:23 by ael-krai          #+#    #+#             */
-/*   Updated: 2025/11/20 11:40:32 by ael-krai         ###   ########.fr       */
+/*   Updated: 2025/11/22 11:57:56 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,44 @@ void	draw_floor_ceiling(t_cub *cub)
     }
 }
 
-void draw_loop(void *param)
+void	init_wall_hit(t_wall_hit *wall_hit, float hit_x, float hit_y,
+	float perp_dist)
+{
+	wall_hit->hit_x = hit_x / (float)BLOCK;
+	wall_hit->hit_y = hit_y / (float)BLOCK;
+	wall_hit->perp_dist = perp_dist;
+	wall_hit->side = wall_hit->cub->dda->side;
+}
+
+/*
+	hit[0] = hit_x
+	hit[1] = hit_y
+	hit[2] = perp_dist
+	line_height = (int)((float)BLOCK / hit[2] * cub->player.dist_proj_plane);
+	
+*/
+void	draw_loop(void *param)
 {
 	t_cub		*cub;
-	float		ray_angle;
-	float		angle_step;
 	int			i;
-	float		hit_x;
-	float		hit_y;
-	float		perp_dist;
-	int			line_height;
+	float		ray_angle;
+	float		hit[3];
 	t_wall_hit	wall_hit;
 
 	cub = (t_cub *)param;
 	move_player(cub);
 	draw_floor_ceiling(cub);
 	cub->player.dist_proj_plane = (WIDTH / 2.0f) / tanf(FOV / 2.0f);
-	angle_step = FOV / (float)WIDTH;
 	ray_angle = cub->player.angle - FOV / 2.0f;
-	i = 0;
-	while (i < WIDTH)
+	wall_hit.cub = cub;
+	i = -1;
+	while (++i < WIDTH)
 	{
-		cast_ray(cub, ray_angle, &hit_x, &hit_y, &perp_dist);
-		perp_dist = perp_dist * cosf(ray_angle - cub->player.angle);
-		wall_hit.hit_x = hit_x / (float)BLOCK; // Prepare wall hit data
-		wall_hit.hit_y = hit_y / (float)BLOCK;
-		wall_hit.perp_dist = perp_dist;
-		wall_hit.side = cub->dda->side;  // from your DDA loop
-		line_height = (int)((float)BLOCK / perp_dist * cub->player.dist_proj_plane);
-		draw_textured_slice(cub, i, &wall_hit, line_height);
-		ray_angle += angle_step;
-		i++;
+		cast_ray(cub, ray_angle, &hit[0], &hit[1], &hit[2]);
+		hit[2] *= cosf(ray_angle - cub->player.angle);
+		init_wall_hit(&wall_hit, hit[0], hit[1], hit[2]);
+		draw_textured_slice(cub, i, &wall_hit,
+			(int)((float)BLOCK / hit[2] * cub->player.dist_proj_plane));
+		ray_angle += FOV / (float)WIDTH;
 	}
 }
