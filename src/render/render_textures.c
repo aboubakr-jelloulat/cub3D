@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 09:56:11 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/22 11:09:03 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:39:04 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ static uint32_t	sample_texture(mlx_texture_t *tex, float tex_x, float tex_y)
 	rgba[1] = pixels[index + 1];
 	rgba[2] = pixels[index + 2];
 	rgba[3] = pixels[index + 3];
-	return (((uint32_t)rgba[0] << 24) | ((uint32_t)rgba[1] << 16)
-		| ((uint32_t)rgba[2] << 8) | (uint32_t)rgba[3]);
+	return ((rgba[0] << 24) | (rgba[1] << 16) | (rgba[2] << 8) | rgba[3]);
 }
 
 static void	init_draw_params(t_wall_hit *hit, int line_height,
@@ -57,7 +56,6 @@ static void	init_draw_params(t_wall_hit *hit, int line_height,
 {
 	params->texture = get_wall_texture(hit->cub, hit->side,
 			hit->hit_x, hit->hit_y);
-	
 	params->draw_start = (HEIGHT - line_height) / 2;
 	params->draw_end = params->draw_start + line_height;
 	if (params->draw_start < 0)
@@ -65,8 +63,8 @@ static void	init_draw_params(t_wall_hit *hit, int line_height,
 	if (params->draw_end >= HEIGHT)
 		params->draw_end = HEIGHT - 1;
 	params->step = (double)(1.0 / line_height);
-	params->tex_y = (double)(params->draw_start - (HEIGHT - line_height) / 2) * params->step;
-
+	params->tex_y = (double)(params->draw_start - (HEIGHT - line_height) / 2)
+		* params->step;
 	params->tex_x = calc_tex_x(hit->side, hit->hit_x, hit->hit_y);
 }
 

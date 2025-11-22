@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:43:54 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/20 13:12:25 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:38:23 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,5 @@
 # define COLOR_RAY 0xFF0000
 # define COLOR_PLAYER 0x00FF00
 # define COLOR_BG 0x000000
-
-# define DEG2RAD(a) ((a) * PI / 180.0f)
 
 #endif
