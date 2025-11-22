@@ -66,7 +66,6 @@ int	load_map_data(t_cub *cub, int ac, char **av)
 	return (0);
 }
 
-
 int	main(int ac, char **av)
 {
 	t_cub	cub;

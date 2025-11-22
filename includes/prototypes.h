@@ -59,9 +59,7 @@ void	move_player(void *param);
 void	clear_image(t_cub *cub);
 float	distance(float x, float y);
 bool	touch(t_cub *cub, float px, float py);
-
-float	fixed_dist(t_cub *cub, float x1, float y1, float x2, float y2);
-void	cast_ray(t_cub *cub, float angle, float *hit_x, float *hit_y, float *perp_dist);
+void	cast_ray(t_cub *cub, float *hit_x, float *hit_y, float *perp_dist);
 
 void	draw_textured_slice(t_cub *cub, int screen_x, t_wall_hit *hit, 
 			int line_height);

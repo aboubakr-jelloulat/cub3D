@@ -14,31 +14,31 @@
 
 void	draw_floor_ceiling(t_cub *cub)
 {
-    int x;
-    int y;
+	int	x;
+	int	y;
 
-    y = 0;
-    while (y < HEIGHT / 2)
-    {
-        x = 0;
-        while (x < WIDTH)
-        {
-            mlx_put_pixel(cub->image, x, y, cub->list_status.ceiling_color);
-            x++;
-        }
-        y++;
-    }
-    y = HEIGHT / 2;
-    while (y < HEIGHT)
-    {
-        x = 0;
-        while (x < WIDTH)
-        {
-            mlx_put_pixel(cub->image, x, y, cub->list_status.floor_color);
-            x++;
-        }
-        y++;
-    }
+	y = 0;
+	while (y < HEIGHT / 2)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			mlx_put_pixel(cub->image, x, y, cub->list_status.ceiling_color);
+			x++;
+		}
+		y++;
+	}
+	y = HEIGHT / 2;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			mlx_put_pixel(cub->image, x, y, cub->list_status.floor_color);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	init_wall_hit(t_wall_hit *wall_hit, float hit_x, float hit_y,
@@ -61,7 +61,6 @@ void	draw_loop(void *param)
 {
 	t_cub		*cub;
 	int			i;
-	float		ray_angle;
 	float		hit[3];
 	t_wall_hit	wall_hit;
 
@@ -69,16 +68,16 @@ void	draw_loop(void *param)
 	move_player(cub);
 	draw_floor_ceiling(cub);
 	cub->player.dist_proj_plane = (WIDTH / 2.0f) / tanf(FOV / 2.0f);
-	ray_angle = cub->player.angle - FOV / 2.0f;
+	cub->ray_angle = cub->player.angle - FOV / 2.0f;
 	wall_hit.cub = cub;
 	i = -1;
 	while (++i < WIDTH)
 	{
-		cast_ray(cub, ray_angle, &hit[0], &hit[1], &hit[2]);
-		hit[2] *= cosf(ray_angle - cub->player.angle);
+		cast_ray(cub, &hit[0], &hit[1], &hit[2]);
+		hit[2] *= cosf(cub->ray_angle - cub->player.angle);
 		init_wall_hit(&wall_hit, hit[0], hit[1], hit[2]);
 		draw_textured_slice(cub, i, &wall_hit,
 			(int)((float)BLOCK / hit[2] * cub->player.dist_proj_plane));
-		ray_angle += FOV / (float)WIDTH;
+		cub->ray_angle += FOV / (float)WIDTH;
 	}
 }

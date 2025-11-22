@@ -12,18 +12,18 @@
 
 #include "../../includes/cub3d.h"
 
-bool touch(t_cub *cub, float px, float py)
+bool	touch(t_cub *cub, float px, float py)
 {
-    int x;
-    int y;
+	int	x;
+	int	y;
 
-    x = px / BLOCK;
-    y = py / BLOCK;
-    if (y < 1 || y >= cub->map.height || x < 1 || x >= cub->map.width)
-        return (true);
-    if (cub->map.map[y][x] == '1')
-        return (true);
-    return (false);
+	x = px / BLOCK;
+	y = py / BLOCK;
+	if (y < 1 || y >= cub->map.height || x < 1 || x >= cub->map.width)
+		return (true);
+	if (cub->map.map[y][x] == '1')
+		return (true);
+	return (false);
 }
 
 void	update_direction(t_cub *cub, t_player *player, float dx, float dy)
@@ -42,14 +42,14 @@ void	update_direction(t_cub *cub, t_player *player, float dx, float dy)
 
 void	rotate_player(t_player *player)
 {
-    if (player->left_rotate)
-        player->angle -= ANGLE_SPEED;
-    if (player->right_rotate)
-        player->angle += ANGLE_SPEED;
-    if (player->angle > 2 * PI)
-        player->angle = 0;
-    if (player->angle < 0)
-        player->angle = 2 * PI;
+	if (player->left_rotate)
+		player->angle -= ANGLE_SPEED;
+	if (player->right_rotate)
+		player->angle += ANGLE_SPEED;
+	if (player->angle > 2 * PI)
+		player->angle = 0;
+	if (player->angle < 0)
+		player->angle = 2 * PI;
 }
 
 void	redirect_player(t_cub *cub, t_player *player)

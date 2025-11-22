@@ -65,6 +65,8 @@ int	shutdown_cub(t_cub *cub)
 		mlx_close_window(cub->mlx);
 	if (cub->image)
 		mlx_delete_image(cub->mlx, cub->image);
+	if (cub->dda)
+		free(cub->dda);
 	gc_collect(cub);
 	ft_bzero(cub, sizeof(t_cub));
 	return (0);

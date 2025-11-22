@@ -107,6 +107,7 @@ typedef struct s_cub
 	t_map			map;
 	bool			floor_color_set;
 	bool			ceiling_color_set;
+	float			ray_angle;
 }	t_cub;
 
 typedef struct s_wall_hit
