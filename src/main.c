@@ -6,7 +6,7 @@
 /*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 09:51:40 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/11/22 15:14:32 by ajelloul         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:20:14 by ajelloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	load_map_data(t_cub *cub, int ac, char **av)
 		return (1);
 	return (0);
 }
+
 
 int	main(int ac, char **av)
 {
